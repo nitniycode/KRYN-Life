@@ -47,6 +47,7 @@ const forcedCategory = pageType === "men" ? "Men" : pageType === "women" ? "Wome
 
 const state = { filtered: [...products], visibleCount: 20 };
 const CART_KEY = "kryn_cart";
+const PRODUCT_KEY = "kryn_selected_product";
 
 const grid = document.querySelector("#product-grid");
 const resultCount = document.querySelector("#result-count");
@@ -150,6 +151,22 @@ function addToCart(productId) {
   saveCart(cart);
 }
 
+function openProductDetails(productId) {
+  const product = products.find((item) => item.id === productId);
+  if (!product) return;
+
+  const selectedProduct = {
+    ...product,
+    description:
+      product.category === "Men"
+        ? "Designed for everyday comfort with a modern silhouette. This piece pairs easily with denim, joggers, or chinos and is built with breathable fabric for all-day wear."
+        : "Crafted for versatile styling with a flattering fit. This piece transitions from day to evening and works beautifully with sneakers, flats, or heels.",
+  };
+
+  localStorage.setItem(PRODUCT_KEY, JSON.stringify(selectedProduct));
+  window.location.href = `product.html?id=${product.id}`;
+}
+
 function renderCart() {
   const cart = getCart();
 
@@ -165,12 +182,19 @@ function renderCart() {
 
 grid.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-id]");
-  if (!button) return;
+  if (button) {
+    const id = Number(button.dataset.id);
+    addToCart(id);
+    renderCart();
+    animateAddToCart(id);
+    return;
+  }
 
-  const id = Number(button.dataset.id);
-  addToCart(id);
-  renderCart();
-  animateAddToCart(id);
+  const card = event.target.closest(".product[data-product-id]");
+  if (!card) return;
+
+  const id = Number(card.dataset.productId);
+  openProductDetails(id);
 });
 
 [search, categoryFilter, sortFilter].filter(Boolean).forEach((input) => {
