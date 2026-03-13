@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRYN Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="brand">KRYN Checkout</div>
+      <nav>
+        <a href="index.html">Continue Shopping</a>
+      </nav>
+    </header>
+
+    <main class="checkout-layout">
+      <section class="checkout-card">
+        <h1>Your Bag</h1>
+        <ul id="checkout-items" class="checkout-items"></ul>
+      </section>
+
+      <section class="checkout-card">
+        <h1>Delivery & Payment</h1>
+        <form id="checkout-form" class="checkout-form">
+          <input type="text" placeholder="Full Name" required />
+          <input type="text" placeholder="Address" required />
+          <input type="text" placeholder="City" required />
+          <select required>
+            <option value="">Payment Method</option>
+            <option>UPI</option>
+            <option>Card</option>
+            <option>Cash on Delivery</option>
+          </select>
+          <div class="summary-row"><span>Subtotal</span><strong>₹<span id="subtotal">0</span></strong></div>
+          <div class="summary-row"><span>Shipping</span><strong>₹<span id="shipping">99</span></strong></div>
+          <div class="summary-row"><span>Total</span><strong>₹<span id="grand-total">0</span></strong></div>
+          <button class="primary" type="submit">Place Order</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="checkout.js"></script>
+  </body>
+</html>
