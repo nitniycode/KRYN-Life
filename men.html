@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KRYN Men | Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="men">
+    <header class="top-nav">
+      <div class="brand">KRYN</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="men.html" class="active">Men</a>
+        <a href="women.html">Women</a>
+        <a href="#">Support</a>
+      </nav>
+      <div class="actions icon-actions">
+        <input id="search" type="text" placeholder="Search men products" />
+        <a class="icon-item" href="signin.html" aria-label="Profile">
+          <span class="icon-symbol">👤</span>
+          <span class="icon-label">Profile</span>
+        </a>
+        <a class="icon-item" href="#" aria-label="Wishlist">
+          <span class="icon-symbol">♡</span>
+          <span class="icon-label">Wishlist</span>
+        </a>
+        <button id="cart-btn" class="icon-item bag-btn" aria-label="Bag">
+          <span class="icon-symbol">👜</span>
+          <span class="icon-label">Bag</span>
+          <span id="cart-count" class="bag-badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero small-hero hero-men">
+      <div>
+        <p class="eyebrow">KRYN Men</p>
+        <h1>Minimal fits. Maximum impact.</h1>
+      </div>
+    </section>
+
+    <main class="layout single-column">
+      <section>
+        <div class="section-head">
+          <h2>Men Collection</h2>
+          <p id="result-count"></p>
+        </div>
+        <div id="product-grid" class="product-grid"></div>
+        <div class="load-more-wrap">
+          <button id="load-more-btn" class="load-more-btn">Show More</button>
+        </div>
+      </section>
+    </main>
+
+    <aside id="cart-panel" class="cart-panel hidden" aria-live="polite">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button id="close-cart">✕</button>
+      </div>
+      <ul id="cart-items"></ul>
+      <div class="cart-footer">
+        <p>Total: ₹<span id="cart-total">0</span></p>
+        <button class="primary checkout">Checkout</button>
+      </div>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>
